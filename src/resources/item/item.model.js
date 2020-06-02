@@ -17,9 +17,9 @@ const itemSchema = new mongoose.Schema(
     notes: String,
     due: Date,
     createdBy: {
+      type: mongoose.SchemaTypes.ObjectId,
       ref: 'user',
-      required: true,
-      type: mongoose.SchemaTypes.ObjectId
+      required: true
     },
     list: {
       type: mongoose.SchemaTypes.ObjectId,
@@ -29,8 +29,6 @@ const itemSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-
-// createdBy field is going to use an id from a 'user'
 
 itemSchema.index({ list: 1, name: 1 }, { unique: true })
 
